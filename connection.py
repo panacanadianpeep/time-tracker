@@ -1,16 +1,32 @@
 import json
 import requests
-import 
+import csv
 
-rescuetime = ""
+def cred_data_processed(unprocessed_creds):
+    rown = 0
+    for i in unprocessed_creds:
+        if rown = 0:
+            continue
+        
 
-def rescuetime():
+def crediental_list():
+    with open('time-tracker-credientals.csv', mode='r') as c_file:
+        csv_reader = csv.DictReader(c_file, delimiter=',')
+        return csv_reader        
+
+def json_request(url):
     # define headers and URL
     headers = {
-        'Host': 'https://www.rescuetime.com/anapi/data',
-        'format': 'json' 
+        'format': 'json'
     }
-    url = 'https://api.ouraring.com/v1/sleep?start=2022-07-16&end=2022-07-16'
 
     response = requests.get(url, headers=headers)
     return response
+
+def main():
+    cred_list = crediental_list()
+    cred_data = cred_data_processed(cred_list)
+main()
+
+
+    
